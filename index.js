@@ -78,11 +78,13 @@ formElement.addEventListener("submit", (evt) => {
 	evt.preventDefault();
 
 	const item = inputElement.value;
-	const taskItem = createItem(item);
-	listElement.prepend(taskItem);
 
-	items = getTasksFromDOM();
-	saveTasks(items);
+	if (item) {
+		const taskItem = createItem(item);
+		listElement.prepend(taskItem);
+
+		rebuildItems();
+	}
 
 	inputElement.value = "";
 });
